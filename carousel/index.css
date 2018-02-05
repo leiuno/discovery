@@ -1,0 +1,98 @@
+
+
+.carousel{
+    width: 320px;
+    height: 180px;
+    margin: 30px auto;
+    overflow: hidden;
+    position: relative;
+}
+.carousel ul,
+.carousel li{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.carousel .img-ct{
+    position: absolute;
+}
+.clearfix{
+    content: "";
+    display: block;
+    clear: both;
+}
+.carousel .img-ct>li{
+    float: left;
+}
+.carousel .img-ct img{
+    width: 320px;
+    height: 180px;
+}
+.carousel .arrow{
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    margin-top: -15px;
+    top: 50%;
+    display: inline-block;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    color: #fff;
+    line-height: 30px;
+    text-align: center;
+    text-decoration: none;
+}
+.carousel .arrow:hover{
+    opacity: 0.8;
+}
+.carousel .pre{
+    left: 10px;
+}
+.carousel .next{
+    right: 10px;
+}
+
+.carousel .bullet{
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    z-index: 1;
+}
+.carousel .bullet>li{
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 30px;
+    height: 5px;
+    margin: 0 3px;
+    cursor: pointer;
+}
+
+.carousel .bullet>li:hover{
+    background: #ccc;
+}
+.active{
+    background: #ccc;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
