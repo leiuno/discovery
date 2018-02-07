@@ -203,6 +203,9 @@ footer li h3{
     color: rgba(255,255,255,0.6);
     margin-top: 0.5vh;
 }
+footer .disabled:hover{
+    color: rgba(255,255,255,0.4);
+}
 
 
 

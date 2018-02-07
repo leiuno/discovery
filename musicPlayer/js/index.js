@@ -20,6 +20,8 @@ var Footer = {
         this.$box = this.$footer.find('.box')
         this.$leftBtn = this.$footer.find('.icon-left')
         this.$rightBtn = this.$footer.find('.icon-right')
+        this.isToEnd = false
+        this.isToStart = true
         this.bind()
         this.render()
     },
@@ -27,20 +29,39 @@ var Footer = {
         var _this = this
         this.$rightBtn.on('click',function(){
             var rowCount = Math.floor(_this.$box.width()/_this.$box.find('li').outerWidth(true))
-            _this.$ul.animate({
+            if(!_this.isToEnd){
+                _this.$ul.animate({
+                    left: '-=' + _this.$box.find('li').outerWidth(true) * rowCount
+                },400,function(){
+                    _this.isToStart = false
+                    if(parseFloat(_this.$box.width()) - parseFloat(_this.$ul.css('left')) >= parseFloat(_this.$ul.css('width'))){
+                        _this.isToEnd = true
+                        _this.$rightBtn.addClass('disabled')
+                    }else{
+                        _this.$rightBtn.removeClass('disabled')
+                    }
+                })
+            }
 
-                left: '-=' + _this.$box.find('li').outerWidth(true) * rowCount
-            },400)
         })
         this.$leftBtn.on('click',function(){
             var rowCount = Math.floor(_this.$box.width()/_this.$box.find('li').outerWidth(true))
-            _this.$ul.animate({
-                left: '+=' + _this.$box.find('li').outerWidth(true) * rowCount
-            },400)
-
+            if(!_this.isToStart){
+                _this.$ul.animate({
+                    left: '+=' + _this.$box.find('li').outerWidth(true) * rowCount
+                },400,function(){
+                    _this.isToEnd = false
+                    if(parseFloat(_this.$ul.css('left')) >= 0){
+                        _this.isToStart = true
+                        _this.$leftBtn.addClass('disabled')
+                    }else{
+                        _this.$leftBtn.removeClass('disabled')
+                    }
+                })
+            }
         })
     },
-    render(){
+    render: function(){
         var _this = this
         $.getJSON('http://api.jirengu.com/fm/getChannels.php')
             .done(function(ret){
