@@ -105,6 +105,7 @@ main .area-bar .bar-progress{
     border-radius: .2vh;
     background: #fff;
     width: 10%;
+    transition: width .8s;
 }
 main .area-bar .current-time{
     width: 3vh;
